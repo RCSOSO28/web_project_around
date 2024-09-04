@@ -1,0 +1,29 @@
+.header__container {
+    display: flex;
+    flex-direction: column;
+    max-width: 880px;
+    margin: 45px auto 0 auto;
+    height: 74px;
+    border-bottom: 1px solid #fff;
+}
+
+.header__container img {
+    width: 173px;
+    height: 33px;
+}
+
+
+@media (max-width: 720px) {
+    .header__container {
+        margin: 28px 0 0 0;
+        height: 56px;
+    }
+
+    .header__container img {
+        width: 126px;
+        height: 24px;
+    }
+    .header__logo {
+        margin: 0px auto 0 27px;
+    }
+}
