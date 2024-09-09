@@ -43,3 +43,21 @@
         justify-items: center;
     }
 }
+
+.elements__item-info button{
+    background-image: url("../images/heart.svg");
+    background-repeat:no-repeat;
+    background-color: #fff;
+    background-position:center;
+    width: 25px;
+    border: none;
+}
+
+.elements__item-info button:hover{
+    opacity: 0.5;
+}
+
+.elements__item-info button:active{
+    background-image: url("../images/heart_black.png");
+    opacity: 1;
+}
