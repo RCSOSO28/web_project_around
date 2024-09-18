@@ -62,7 +62,7 @@
     opacity: 0.5;
 }
 
-.elements__item-button:active{
+.elements__item-button_active {
     background-image: url("../images/heart_black.png");
     opacity: 1;
 }

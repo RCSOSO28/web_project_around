@@ -13,6 +13,7 @@ const popupFormButton = document.querySelector(".popup__form-button");
 const profileButton = document.querySelector(".profile__button");
 const elementTemplate = document.querySelector("#item-template").content;
 
+
 const initialCards = [
     {
       name: "Valle de Yosemite",
@@ -47,6 +48,9 @@ window.addEventListener('load', function() {
         element.querySelector(".elements__item-img").alt = "Imagen de referencia del lugar " + card.name ;
         element.querySelector(".elements__item-name").textContent = card.name;
         elementsContainer.append(element);
+        element.querySelector(".elements__item-button").addEventListener("click", function(evt) {
+        evt.target.classList.toggle("elements__item-button_active");
+        });
     });
 });
 
@@ -91,11 +95,17 @@ function handleFormSubmit(evt) {
       element.querySelector(".elements__item-img").src = secondInput.value;
       element.querySelector(".elements__item-img").alt = "Imagen de referencia del lugar " + secondInput.value;
       element.querySelector(".elements__item-name").textContent = firstInput.value;
+      element.querySelector(".elements__item-button").addEventListener("click", function(evt) {
+        evt.target.classList.toggle("elements__item-button_active");
+        });
       elementsContainer.prepend(element);
       closeEditForm();
     }
 }
 
+function toggleLikeButton (evt) {
+  evt.target.classList.toggle("elements__item-button_active");
+}
 
 edditButton.addEventListener("click", openEditForm);
 
@@ -104,3 +114,5 @@ closePopUpButton.addEventListener("click", closeEditForm);
 formElement.addEventListener('submit', handleFormSubmit);
 
 profileButton.addEventListener("click", openEditForm);
+
+
