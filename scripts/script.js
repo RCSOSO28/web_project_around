@@ -103,10 +103,6 @@ function handleFormSubmit(evt) {
     }
 }
 
-function toggleLikeButton (evt) {
-  evt.target.classList.toggle("elements__item-button_active");
-}
-
 edditButton.addEventListener("click", openEditForm);
 
 closePopUpButton.addEventListener("click", closeEditForm);
