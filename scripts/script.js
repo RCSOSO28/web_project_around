@@ -11,6 +11,7 @@ const elementsContainer = document.querySelector(".elements__container");
 const popupFormTitle = document.querySelector(".popup__form-title");
 const popupFormButton = document.querySelector(".popup__form-button");
 const profileButton = document.querySelector(".profile__button");
+const elementTemplate = document.querySelector("#item-template").content;
 
 const initialCards = [
     {
@@ -40,7 +41,6 @@ const initialCards = [
 ];
 
 window.addEventListener('load', function() {
-    const elementTemplate = document.querySelector("#item-template").content;
     initialCards.forEach( function (card) {
         const element = elementTemplate.querySelector(".elements__item").cloneNode(true);
         element.querySelector(".elements__item-img").src = card.link;
@@ -74,6 +74,8 @@ function closeEditForm() {
     popup.classList.remove("popup_opened");
     page.style.opacity = 1;
     page.style.pointerEvents = "auto";
+    firstInput.value = "";
+    secondInput.value = "";
 }
 
 
@@ -85,6 +87,11 @@ function handleFormSubmit(evt) {
     }
     else if (evt.target[2].innerText == "Crear") {
       evt.preventDefault();  
+      const element = elementTemplate.querySelector(".elements__item").cloneNode(true);
+      element.querySelector(".elements__item-img").src = secondInput.value;
+      element.querySelector(".elements__item-img").alt = "Imagen de referencia del lugar " + secondInput.value;
+      element.querySelector(".elements__item-name").textContent = firstInput.value;
+      elementsContainer.prepend(element);
       closeEditForm();
     }
 }
