@@ -10,6 +10,7 @@
 }
 
 .elements__item {
+    position: relative;
     width: 282px;
     height: 361px;
     border-radius: 10px;
@@ -38,6 +39,12 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.elements__item-delete{
+    position: absolute;
+    top: 18px;
+    right: 15px;
 }
 
 @media (max-width: 880px) {

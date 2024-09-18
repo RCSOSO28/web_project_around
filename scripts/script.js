@@ -41,17 +41,25 @@ const initialCards = [
     }
 ];
 
-window.addEventListener('load', function() {
-    initialCards.forEach( function (card) {
-        const element = elementTemplate.querySelector(".elements__item").cloneNode(true);
-        element.querySelector(".elements__item-img").src = card.link;
-        element.querySelector(".elements__item-img").alt = "Imagen de referencia del lugar " + card.name ;
-        element.querySelector(".elements__item-name").textContent = card.name;
-        elementsContainer.append(element);
-        element.querySelector(".elements__item-button").addEventListener("click", function(evt) {
-        evt.target.classList.toggle("elements__item-button_active");
-        });
+
+function createElement(card){
+  const element = elementTemplate.querySelector(".elements__item").cloneNode(true);
+}
+
+function addToggleLikeButton(element) {
+  element.querySelector(".elements__item-button").addEventListener("click", function(evt) {
+    evt.target.classList.toggle("elements__item-button_active");
     });
+}
+
+
+initialCards.forEach(function (card) {
+    const element = elementTemplate.querySelector(".elements__item").cloneNode(true);
+    element.querySelector(".elements__item-img").src = card.link;
+    element.querySelector(".elements__item-img").alt = "Imagen de referencia del lugar " + card.name ;
+    element.querySelector(".elements__item-name").textContent = card.name;
+    addToggleLikeButton(element);
+    elementsContainer.append(element);
 });
 
 function openEditForm(evt) {
@@ -95,9 +103,7 @@ function handleFormSubmit(evt) {
       element.querySelector(".elements__item-img").src = secondInput.value;
       element.querySelector(".elements__item-img").alt = "Imagen de referencia del lugar " + secondInput.value;
       element.querySelector(".elements__item-name").textContent = firstInput.value;
-      element.querySelector(".elements__item-button").addEventListener("click", function(evt) {
-        evt.target.classList.toggle("elements__item-button_active");
-        });
+      addToggleLikeButton(element);
       elementsContainer.prepend(element);
       closeEditForm();
     }
@@ -110,5 +116,3 @@ closePopUpButton.addEventListener("click", closeEditForm);
 formElement.addEventListener('submit', handleFormSubmit);
 
 profileButton.addEventListener("click", openEditForm);
-
-
