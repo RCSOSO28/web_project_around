@@ -38,49 +38,15 @@
             </section>
             <section class="elements">
                 <div class="elements__container">
-                    <div class="elements__item">
-                        <img src="images/yosemite.png" alt="Referencia al lugar yosemite">  
-                        <div class="elements__item-info">
-                            <p>Valle de Yosemite</p> 
-                            <button></button>
-                        </div>  
-                    </div>
-                    <div class="elements__item">
-                        <img src="images/louise.png" alt="Referencia al lugar yosemite"> 
-                        <div class="elements__item-info">
-                            <p>Lago Louise</p> 
-                            <button></button>
+                    <template id="item-template">
+                        <div class="elements__item" >
+                            <img class="elements__item-img" alt="">  
+                            <div class="elements__item-info">
+                                <p class="elements__item-name"></p> 
+                                <button class="elements__item-button"></button>
+                            </div>  
                         </div>
-                         
-                    </div>
-                    <div class="elements__item">    
-                        <img src="images/calvas.png" alt="Referencia al lugar calvas">
-                        <div class="elements__item-info">
-                            <p>Montañas Calvas</p>
-                            <button></button>
-                        </div>                    
-                    </div>
-                    <div class="elements__item">         
-                        <img src="images/latemar.png" alt="Referencia al lugar latemar">
-                        <div class="elements__item-info">
-                            <p>Latemar</p>
-                            <button></button>
-                        </div>                
-                    </div>
-                    <div class="elements__item">
-                        <img src="images/vanois.png" alt="Referencia al lugar vanois">
-                        <div class="elements__item-info">
-                            <p>Vanois National Park</p>
-                            <button></button>
-                        </div>                            
-                    </div>
-                    <div class="elements__item">       
-                        <img src="images/braises.png" alt="Referencia al lugar braises">
-                        <div class="elements__item-info">
-                            <p>Lago di Braies</p>
-                            <button></button>
-                        </div>                   
-                    </div>
+                    </template>
                 </div>
             </section>
         </main>
@@ -94,10 +60,10 @@
         <div class="popup__container">
             <img class="popup-close" src="/images/close_icon.png" alt="icono para cerrar formulario">
             <form action="" class="popup__form">
-                <h2 class="popup__form-title">Editar Perfil</h2>
-                <input class="popup__form-name" type="text" id="name" placeholder="Nombre" name="name">
-                <input class="popup__form-about" type="text" id="about" placeholder="Acerca de mi" name="about">
-                <button class="popup__form-button">Guardar</button>
+                <h2 class="popup__form-title">texto-cualquiera</h2>
+                <input class="popup__form-first" type="text" id="first" name="first">
+                <input class="popup__form-second" type="text" id="second"  name="second">
+                <button class="popup__form-button"></button>
             </form>
         </div>
     </section>
