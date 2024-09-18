@@ -1,12 +1,51 @@
-let page = document.querySelector(".page");
-let edditButton = document.querySelector(".profile__information-button1");
-let popup = document.querySelector(".popup");
-let closePopUpButton = document.querySelector(".popup-close");
-let nameInput = document.querySelector(".popup__form-name");
-let jobInput = document.querySelector(".popup__form-about");
-let profileName = document.querySelector(".profile__information-name--size1");
-let profileAbout = document.querySelector(".profile__information-name--size2");
-let formElement = document.querySelector(".popup__form");
+const page = document.querySelector(".page");
+const edditButton = document.querySelector(".profile__information-button1");
+const popup = document.querySelector(".popup");
+const closePopUpButton = document.querySelector(".popup-close");
+const nameInput = document.querySelector(".popup__form-name");
+const jobInput = document.querySelector(".popup__form-about");
+const profileName = document.querySelector(".profile__information-name--size1");
+const profileAbout = document.querySelector(".profile__information-name--size2");
+const formElement = document.querySelector(".popup__form");
+const elementsContainer = document.querySelector(".elements__container");
+
+const initialCards = [
+    {
+      name: "Valle de Yosemite",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
+    },
+    {
+      name: "Lago Louise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
+    },
+    {
+      name: "Montañas Calvas",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
+    },
+    {
+      name: "Latemar",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
+    },
+    {
+      name: "Parque Nacional de la Vanoise",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
+    },
+    {
+      name: "Lago di Braies",
+      link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+    }
+];
+
+window.addEventListener('load', function() {
+    const elementTemplate = document.querySelector("#item-template").content;
+    initialCards.forEach( function (card) {
+        const element = elementTemplate.querySelector(".elements__item").cloneNode(true);
+        element.querySelector(".elements__item-img").src = card.link;
+        element.querySelector(".elements__item-img").alt = "Imagen de referencia del lugar " + card.name ;
+        element.querySelector(".elements__item-name").textContent = card.name;
+        elementsContainer.append(element);
+    });
+});
 
 function openEditForm() {
     popup.classList.add("popup_opened");

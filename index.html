@@ -38,49 +38,15 @@
             </section>
             <section class="elements">
                 <div class="elements__container">
-                    <div class="elements__item">
-                        <img src="images/yosemite.png" alt="Referencia al lugar yosemite">  
-                        <div class="elements__item-info">
-                            <p>Valle de Yosemite</p> 
-                            <button></button>
-                        </div>  
-                    </div>
-                    <div class="elements__item">
-                        <img src="images/louise.png" alt="Referencia al lugar yosemite"> 
-                        <div class="elements__item-info">
-                            <p>Lago Louise</p> 
-                            <button></button>
+                    <template id="item-template">
+                        <div class="elements__item" >
+                            <img class="elements__item-img" alt="algún valor">  
+                            <div class="elements__item-info">
+                                <p class="elements__item-name"></p> 
+                                <button class="elements__item-button"></button>
+                            </div>  
                         </div>
-                         
-                    </div>
-                    <div class="elements__item">    
-                        <img src="images/calvas.png" alt="Referencia al lugar calvas">
-                        <div class="elements__item-info">
-                            <p>Montañas Calvas</p>
-                            <button></button>
-                        </div>                    
-                    </div>
-                    <div class="elements__item">         
-                        <img src="images/latemar.png" alt="Referencia al lugar latemar">
-                        <div class="elements__item-info">
-                            <p>Latemar</p>
-                            <button></button>
-                        </div>                
-                    </div>
-                    <div class="elements__item">
-                        <img src="images/vanois.png" alt="Referencia al lugar vanois">
-                        <div class="elements__item-info">
-                            <p>Vanois National Park</p>
-                            <button></button>
-                        </div>                            
-                    </div>
-                    <div class="elements__item">       
-                        <img src="images/braises.png" alt="Referencia al lugar braises">
-                        <div class="elements__item-info">
-                            <p>Lago di Braies</p>
-                            <button></button>
-                        </div>                   
-                    </div>
+                    </template>
                 </div>
             </section>
         </main>
