@@ -36,14 +36,15 @@
                     </div>
                 </div>
             </section>
-            <section class="elements">
-                <div class="elements__container">
-                    <template id="item-template">
-                        <div class="elements__item" >
-                            <img class="elements__item-img" alt="">  
-                            <div class="elements__item-info">
-                                <p class="elements__item-name"></p> 
-                                <button class="elements__item-button"></button>
+            <section class="cards">
+                <div class="cards__container">
+                    <template id="card-template">
+                        <div class="cards__item" >
+                            <img class="cards__item-delete" src="/images/trash.svg" alt="Icono para eliminar elemento"> 
+                            <img class="cards__item-img" alt="Foto de referencia">
+                            <div class="cards__item-info">
+                                <p class="cards__item-name"></p> 
+                                <button class="cards__item-button"></button>
                             </div>  
                         </div>
                     </template>
@@ -59,12 +60,18 @@
     <section class="popup">
         <div class="popup__container">
             <img class="popup-close" src="/images/close_icon.png" alt="icono para cerrar formulario">
-            <form action="" class="popup__form">
-                <h2 class="popup__form-title">texto-cualquiera</h2>
-                <input class="popup__form-first" type="text" id="first" name="first">
+            <form class="popup__form">
+                <h2 class="popup__form-title">text-cualquiera</h2>
+                <input class="popup__form-first" type="text" id="first" name="first" >
                 <input class="popup__form-second" type="text" id="second"  name="second">
                 <button class="popup__form-button"></button>
             </form>
+        </div>
+    </section>
+    <section class="bigimage">
+        <div class="bigimage__container">
+            <img class="bigimage-close" src="/images/close_icon.png" alt="icono para cerrar la ilustracion grande">
+            <img class="bigimage-ils" src="" alt="">
         </div>
     </section>
     <script src="/scripts/script.js"></script>
