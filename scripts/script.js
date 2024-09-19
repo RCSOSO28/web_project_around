@@ -54,12 +54,14 @@ function createCard (card, newCard = false) {
     case false:
       cardAux.querySelector(".cards__item-img").src = card.link;
       cardAux.querySelector(".cards__item-img").alt = "Imagen de referencia del lugar " + card.name ;
-      cardAux.querySelector(".cards__item-name").textContent = card.name;         
+      cardAux.querySelector(".cards__item-name").textContent = card.name;  
+      addDeleteTrashButton(cardAux);       
       break;
     case true:
       cardAux.querySelector(".cards__item-img").src = secondInput.value;
       cardAux.querySelector(".cards__item-img").alt = "Imagen de referencia del lugar " + firstInput.value;
       cardAux.querySelector(".cards__item-name").textContent = firstInput.value;
+      addDeleteTrashButton(cardAux); 
       break;   
   }
    return cardAux;
@@ -69,6 +71,14 @@ function addToggleLikeButton(cardTemplate) {
   cardTemplate.querySelector(".cards__item-button").addEventListener("click", function(evt) {
     evt.target.classList.toggle("cards__item-button_active");
     });
+}
+
+function addDeleteTrashButton(card) {
+  let buttonTrash = card.querySelector(".cards__item-delete");
+      buttonTrash.addEventListener("click", () => {
+        let cardAuxContainer = buttonTrash.parentElement;
+        cardAuxContainer.remove();
+      });
 }
 
 initialCards.forEach(function (card) {
