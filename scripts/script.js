@@ -20,6 +20,11 @@ const formElement = document.querySelector(".popup__form");
 const popupFormTitle = document.querySelector(".popup__form-title");
 const popupFormButton = document.querySelector(".popup__form-button");
 
+// Selectors bigImage
+const bigImage = document.querySelector(".bigimage");
+const bigImageIlustration = document.querySelector(".bigimage-ils");
+const closeBigImage = document.querySelector(".bigimage-close");
+
 
 const initialCards = [
     {
@@ -48,6 +53,32 @@ const initialCards = [
     }
 ];
 
+function addDeleteTrashButton(card) {
+  let buttonTrash = card.querySelector(".cards__item-delete");
+    buttonTrash.addEventListener("click", () => {
+      let cardAuxContainer = buttonTrash.parentElement;
+      cardAuxContainer.remove();
+    });
+};
+
+function addPopUpWindowImageCard(cardTemplate) {
+    cardTemplate.querySelector(".cards__item-img").addEventListener("click" , function(evt){
+    bigImage.classList.add("bigimage_opened");
+    bigImageIlustration.src = evt.srcElement.src;
+    page.style.opacity = 0.4;
+    page.style.pointerEvents = "none";
+  });  
+}
+
+function addPopUpWindowImageCard(cardTemplate) {
+  cardTemplate.querySelector(".cards__item-img").addEventListener("click" , function(evt){
+  bigImage.classList.add("bigimage_opened");
+  bigImageIlustration.src = evt.srcElement.src;
+  page.style.opacity = 0.4;
+  page.style.pointerEvents = "none";
+});  
+}
+
 function createCard (card, newCard = false) {
   const cardAux = cardTemplate.querySelector(".cards__item").cloneNode(true);
   switch (newCard) {
@@ -55,13 +86,15 @@ function createCard (card, newCard = false) {
       cardAux.querySelector(".cards__item-img").src = card.link;
       cardAux.querySelector(".cards__item-img").alt = "Imagen de referencia del lugar " + card.name ;
       cardAux.querySelector(".cards__item-name").textContent = card.name;  
-      addDeleteTrashButton(cardAux);       
+      addDeleteTrashButton(cardAux);    
+      addPopUpWindowImageCard(cardAux);   
       break;
     case true:
       cardAux.querySelector(".cards__item-img").src = secondInput.value;
       cardAux.querySelector(".cards__item-img").alt = "Imagen de referencia del lugar " + firstInput.value;
       cardAux.querySelector(".cards__item-name").textContent = firstInput.value;
       addDeleteTrashButton(cardAux); 
+      addPopUpWindowImageCard(cardAux);
       break;   
   }
    return cardAux;
@@ -73,17 +106,10 @@ function addToggleLikeButton(cardTemplate) {
     });
 }
 
-function addDeleteTrashButton(card) {
-  let buttonTrash = card.querySelector(".cards__item-delete");
-      buttonTrash.addEventListener("click", () => {
-        let cardAuxContainer = buttonTrash.parentElement;
-        cardAuxContainer.remove();
-      });
-}
-
 initialCards.forEach(function (card) {
     let cardAux = createCard(card, false);
     addToggleLikeButton(cardAux);
+    addPopUpWindowImageCard(cardAux);
     cardsContainer.append(cardAux);
 });
 
@@ -117,6 +143,11 @@ function closeEditForm() {
     secondInput.value = "";
 }
 
+function closePopUpWindowImageCard() {
+  bigImage.classList.remove("bigimage_opened");
+  page.style.opacity = 1;
+  page.style.pointerEvents = "auto";
+}
 
 function handleFormSubmit(evt) {
 
@@ -142,3 +173,5 @@ closePopUpButton.addEventListener("click", closeEditForm);
 formElement.addEventListener('submit', handleFormSubmit);
 
 profileButton.addEventListener("click", openEditForm);
+
+closeBigImage.addEventListener("click", closePopUpWindowImageCard);

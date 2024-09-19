@@ -1,0 +1,41 @@
+.bigimage {
+    display: none;
+    color: #000;
+    font-family: 'Inter-Regular';
+    justify-content: center;
+    pointer-events: auto;
+}
+
+.bigimage_opened {
+    display: flex;
+    flex-direction: row;
+}
+
+.bigimage__container {
+    position: absolute;
+    top: 90px;
+    margin: 0 auto;
+}
+
+.bigimage-ils {
+    max-width: 75vw;
+    max-height: 75vh;
+}
+
+.bigimage-close {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -40px;
+    right: -35px;
+    
+}
+
+@media (max-width: 880px) {
+    .bigimage-close {
+        width: 20px;
+        height: 20px;
+        top: -25px;
+        right: -25px;
+    }
+}
