@@ -1,4 +1,4 @@
-.elements__container {
+.cards__container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -9,7 +9,7 @@
     row-gap: 20px;
 }
 
-.elements__item {
+.cards__item {
     position: relative;
     width: 282px;
     height: 361px;
@@ -17,12 +17,12 @@
     background-color: #fff;
 }
 
-.elements__item-img {
+.cards__item-img {
     width: 100%;
     height: 282px;
 }
 
-.elements__item-info {
+.cards__item-info {
     display: flex;
     width: 246px;
     font-family: 'Inter-Regular';
@@ -34,21 +34,21 @@
     justify-content: space-between;
 }
 
-.elements__item-name{
+.cards__item-name{
     margin: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 }
 
-.elements__item-delete{
+.cards__item-delete{
     position: absolute;
     top: 18px;
     right: 15px;
 }
 
 @media (max-width: 880px) {
-    .elements__container {
+    .cards__container {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         margin: 36px auto 0 auto;
@@ -56,7 +56,7 @@
     }
 }
 
-.elements__item-button { 
+.cards__item-button { 
     background-image: url("../images/heart.svg");
     background-repeat:no-repeat;
     background-color: #fff;
@@ -65,11 +65,11 @@
     border: none;
 }
 
-.elements__item-button:hover{
+.cards__item-button:hover{
     opacity: 0.5;
 }
 
-.elements__item-button_active {
+.cards__item-button_active {
     background-image: url("../images/heart_black.png");
     opacity: 1;
 }

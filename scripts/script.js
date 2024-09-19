@@ -1,17 +1,24 @@
+// Selectors General
 const page = document.querySelector(".page");
+
+// Selectos profile
 const edditButton = document.querySelector(".profile__information-button1");
+const profileName = document.querySelector(".profile__information-name--size1");
+const profileAbout = document.querySelector(".profile__information-name--size2");
+
+// Selector Cards
+const cardsContainer = document.querySelector(".cards__container");
+const cardTemplate = document.querySelector("#card-template").content;
+const profileButton = document.querySelector(".profile__button");
+
+// Selectors form
 const popup = document.querySelector(".popup");
 const closePopUpButton = document.querySelector(".popup-close");
 const firstInput = document.querySelector(".popup__form-first");
 const secondInput = document.querySelector(".popup__form-second");
-const profileName = document.querySelector(".profile__information-name--size1");
-const profileAbout = document.querySelector(".profile__information-name--size2");
 const formElement = document.querySelector(".popup__form");
-const elementsContainer = document.querySelector(".elements__container");
 const popupFormTitle = document.querySelector(".popup__form-title");
 const popupFormButton = document.querySelector(".popup__form-button");
-const profileButton = document.querySelector(".profile__button");
-const elementTemplate = document.querySelector("#item-template").content;
 
 
 const initialCards = [
@@ -41,42 +48,52 @@ const initialCards = [
     }
 ];
 
-
-function createElement(card){
-  const element = elementTemplate.querySelector(".elements__item").cloneNode(true);
+function createCard (card, newCard = false) {
+  const cardAux = cardTemplate.querySelector(".cards__item").cloneNode(true);
+  switch (newCard) {
+    case false:
+      cardAux.querySelector(".cards__item-img").src = card.link;
+      cardAux.querySelector(".cards__item-img").alt = "Imagen de referencia del lugar " + card.name ;
+      cardAux.querySelector(".cards__item-name").textContent = card.name;         
+      break;
+    case true:
+      cardAux.querySelector(".cards__item-img").src = secondInput.value;
+      cardAux.querySelector(".cards__item-img").alt = "Imagen de referencia del lugar " + firstInput.value;
+      cardAux.querySelector(".cards__item-name").textContent = firstInput.value;
+      break;   
+  }
+   return cardAux;
 }
 
-function addToggleLikeButton(element) {
-  element.querySelector(".elements__item-button").addEventListener("click", function(evt) {
-    evt.target.classList.toggle("elements__item-button_active");
+function addToggleLikeButton(cardTemplate) {
+  cardTemplate.querySelector(".cards__item-button").addEventListener("click", function(evt) {
+    evt.target.classList.toggle("cards__item-button_active");
     });
 }
 
-
 initialCards.forEach(function (card) {
-    const element = elementTemplate.querySelector(".elements__item").cloneNode(true);
-    element.querySelector(".elements__item-img").src = card.link;
-    element.querySelector(".elements__item-img").alt = "Imagen de referencia del lugar " + card.name ;
-    element.querySelector(".elements__item-name").textContent = card.name;
-    addToggleLikeButton(element);
-    elementsContainer.append(element);
+    let cardAux = createCard(card, false);
+    addToggleLikeButton(cardAux);
+    cardsContainer.append(cardAux);
 });
 
 function openEditForm(evt) {
-    if (evt.currentTarget.className === 'profile__information-button1')
-    {
+  switch (evt.currentTarget.className) {
+    case 'profile__information-button1':
       popupFormTitle.textContent = "Editar Perfil";
       popupFormButton.textContent = "Guardar";
       firstInput.placeholder = "Nombre";
       secondInput.placeholder = "Acerca de mi";
       firstInput.value =  profileName.textContent;
       secondInput.value = profileAbout.textContent;
-    } else if (evt.currentTarget.className === 'profile__button') {
+      break;
+    case 'profile__button':
       popupFormTitle.textContent = "Nuevo lugar";
       popupFormButton.textContent = "Crear";
       firstInput.placeholder = "Título";
       secondInput.placeholder = "Enlace a la imagen";
-    }
+      break;
+  }
     popup.classList.add("popup_opened");
     page.style.opacity = 0.4;
     page.style.pointerEvents = "none";
@@ -92,21 +109,20 @@ function closeEditForm() {
 
 
 function handleFormSubmit(evt) {
-    if (evt.target[2].innerText == "Guardar") {
+
+  switch (evt.target[2].innerText) {
+    case "Guardar":
       profileName.textContent = firstInput.value;
       profileAbout.textContent = secondInput.value;
-      evt.preventDefault();  
-    }
-    else if (evt.target[2].innerText == "Crear") {
-      evt.preventDefault();  
-      const element = elementTemplate.querySelector(".elements__item").cloneNode(true);
-      element.querySelector(".elements__item-img").src = secondInput.value;
-      element.querySelector(".elements__item-img").alt = "Imagen de referencia del lugar " + secondInput.value;
-      element.querySelector(".elements__item-name").textContent = firstInput.value;
-      addToggleLikeButton(element);
-      elementsContainer.prepend(element);
+      break;
+    case "Crear":
+      let cardAux = createCard(null, true)
+      addToggleLikeButton(cardAux);
+      cardsContainer.prepend(cardAux);
       closeEditForm();
-    }
+      break;
+  }
+    evt.preventDefault();
 }
 
 edditButton.addEventListener("click", openEditForm);
